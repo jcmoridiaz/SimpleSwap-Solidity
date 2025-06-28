@@ -70,25 +70,29 @@ SwapExecuted(address sender, uint256 amountIn, uint256 amountOut, address to)
 
 Initializes the pair with two token addresses. These cannot be changed.
 
-### `addLiquidity(...)`
+### `addLiquidity(address tokenA, address tokenB, uint256 amountADesired, uint256 amountBDesired, uint256 amountAMin,  uint256 amountBMin, address to,  uint256 deadline)` 
+###    returns (uint256 amountA, uint256 amountB, uint256 liquidity)
 
 Allows users to add liquidity for the token pair. It validates ratios, transfers tokens to the contract, and mints LP tokens.
 
-### `removeLiquidity(...)`
+### `removeLiquidity(address tokenA, address tokenB, uint256 liquidity, uint256 amountAMin, uint256 amountBMin, address to, uint256 deadline)`
+###    returns (uint256 amountA, uint256 amountB)
 
 Allows LP token holders to burn their liquidity tokens and retrieve the underlying tokens.
 
-### `swapExactTokensForTokens(...)`
+### `swapExactTokensForTokens(uint256 amountIn, uint256 amountOutMin, address[] calldata path, address to, uint256 deadline)`
+###    returns (uint256[] memory amounts)
 
 Swaps an exact amount of one token for another, following the constant product formula and applying a fee.
 
-### `getPrice(...)`
+### `getPrice(address tokenA, address tokenB)`
+###    returns (uint256 price)
 
 Returns the price of one token in terms of the other, scaled to 18 decimals.
 
 ### `getAmountOut(uint amountIn, uint reserveIn, uint reserveOut)`
-
-Pure function that calculates the expected output amount given reserves and input, using Uniswap's formula with 0.3% fee.
+###    returns (uint256 amountOut)
+Pure function that calculates the expected output amount given reserves and input.
 
 ### `_updateReserves()`
 
